@@ -21,6 +21,7 @@ RUN pip install -r requirements.txt --no-cache-dir
 # той директории локального компьютера, где сохранён Dockerfile,
 # в текущую рабочую директорию образа — /app.
 COPY . .
+RUN chmod a+x /entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 # При старте контейнера запустить сервер разработки.
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi"]
